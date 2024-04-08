@@ -6,7 +6,6 @@ interface Props {
   itemType: DayItemType;
   className?: string;
   onClick?: () => void;
-  currentDate?: Date;
   dateAry?: Date[];
   isToday?: boolean;
   isOtherMonth?: boolean;
