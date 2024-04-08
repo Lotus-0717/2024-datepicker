@@ -11,7 +11,7 @@ interface Props {
   setDateAry: React.Dispatch<React.SetStateAction<Date[]>>;
 }
 interface MonthInfo {
-  firstDay: number;
+  mfirstDay: number;
   totalDays: number;
 }
 const DatepickerDaysContainer = ({
@@ -39,13 +39,13 @@ const DatepickerDaysContainer = ({
 
   function getMonthInfo(year: number, month: number) {
     const firstDayOfMonth = new Date(year, month - 1, 1);
-    const firstDay = firstDayOfMonth.getDay();
+    const mfirstDay = firstDayOfMonth.getDay();
     const totalDays = new Date(year, month, 0).getDate();
-    return { firstDay, totalDays };
+    return { mfirstDay, totalDays };
   }
 
   function fillMonthAry(monthInfo: MonthInfo) {
-    const prevMonthDaysLen = monthInfo.firstDay;
+    const prevMonthDaysLen = monthInfo.mfirstDay;
     const nextMonthDaysLen =
       daysAry.length - prevMonthDaysLen - monthInfo.totalDays;
 
@@ -69,7 +69,7 @@ const DatepickerDaysContainer = ({
     }
 
     for (let i = 1; i <= monthInfo.totalDays; i++) {
-      daysAry[monthInfo.firstDay - 1 + i] = {
+      daysAry[monthInfo.mfirstDay - 1 + i] = {
         y: displayYear,
         m: displayMonth,
         d: i,
@@ -97,7 +97,6 @@ const DatepickerDaysContainer = ({
         currentDate.setHours(0, 0, 0, 0);
         return (
           <DatepickerDayItem
-            currentDate={currentDate}
             dateAry={dateAry}
             itemType={DayItemType.Clickable}
             key={date.getTime() + displayMonth}
