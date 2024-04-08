@@ -10,7 +10,7 @@ const Datepicker = ({ type, onDateChange }: Props) => {
   const [dateAry, setDateAry] = useState<Date[]>([]);
   useEffect(() => {
     onDateChange(dateAry);
-  }, [dateAry]);
+  }, [dateAry, onDateChange]);
   return (
     <div>
       <DatepickerContainer
